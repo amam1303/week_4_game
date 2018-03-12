@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" style="text/css" href="C:\Users\Work\Desktop\week-4-game\week_4_game\css\style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
 
 
 <body>
-        <button class="input_Display"><h1 id="targetDisplay">0</h1></button>
-    <br>
-    <button id="mila"class="hotCelebs"><img src=C:\Users\Work\Desktop\week-4-game\week_4_game\images\kunis.gif width="145" height="126" alt="penny"></button> 
-    <button id='miley'class="hotCelebs"><img src=C:\Users\Work\Desktop\week-4-game\week_4_game\images\miley.gif width="145" height="126" alt="miley"></button> 
-    <button id='meryl'class="hotCelebs"><img src=C:\Users\Work\Desktop\week-4-game\week_4_game\images\meryl.gif width="145" height="126" alt="meryl"></button>
-    <button id='penny'class="hotCelebs"><img src=C:\Users\Work\Desktop\week-4-game\week_4_game\images\penny.gif width="145" height="126" alt="penny"></button> 
-    <br>
-    
-    <button class="input_Display"><h1 id="inputDisplay">0</h1></button>
-    <p>Wins: </p><p id="numberWins">0</p>
-    <p>Losses: </p><p id="numberLosses">0</p>
+    <div class="container-fluid">
+        
+            <div class="jumbotron">
+                    <h1 class="display-6">Crystal Catcher!</h1>
+                    <p class="lead">There are four hot celebs below. By clicking on a celeb you will add a specific amount of points to your total score.<br />You win the game by matching your total score to random number, you lose the game if your total score goes above the random number.<br />The value of each crystal is hidden from you until you click on it.</p>
+                    <hr class="my-4">
+                    
+              <!-- Html element for target number -->
+              <button class="input_Display"><h1 id="targetDisplay">0</h1></button>
+              <br>
+              <!-- HTML 4 button elements for each celevs -->
+              <button id="mila"class="hotCelebs"><img src=C:\Users\Work\Desktop\week-4-game\week_4_game\images\kunis.gif width="145" height="126" alt="penny"></button> 
+              <button id='miley'class="hotCelebs"><img src=C:\Users\Work\Desktop\week-4-game\week_4_game\images\miley.gif width="145" height="126" alt="miley"></button> 
+              <button id='meryl'class="hotCelebs"><img src=C:\Users\Work\Desktop\week-4-game\week_4_game\images\meryl.gif width="145" height="126" alt="meryl"></button>
+              <button id='penny'class="hotCelebs"><img src=C:\Users\Work\Desktop\week-4-game\week_4_game\images\penny.gif width="145" height="126" alt="penny"></button> 
+              <br>
+              <!-- click number display -->
+              <button class="input_Display"><h1 id="inputDisplay">0</h1></button><br>
+             <!-- score keeper display -->
+              <button type="button" class="btn btn-outline-success">Success: <p id="numberWins">0</p></button>
+              <button type="button" class="btn btn-outline-danger">Failure: <p id="numberLosses">0</p></button>
+            
+    </div>
 
-     
+</div>     
 
 <script> 
 
+//assign values for total result, scores, target number and each celeb buttons
 var result =0;
 var wins =0;
 var losses=0;
@@ -32,6 +46,7 @@ var miley = {nmbr: Math.floor((Math.random() * 20) + 1)};
 var meryl = {nmbr: Math.floor((Math.random() * 20) + 1)};
 var penny = {nmbr: Math.floor((Math.random() * 20) + 1)};
 
+//Game reset function
 function gameRestart(){
       target.nmbr=Math.floor(Math.random()*80+40);
       
@@ -44,11 +59,13 @@ function gameRestart(){
       result= 0;
       $('#inputDisplay').text(result);
       }
+//Function if player wins
 function win(){
     wins++; 
     $('#numberWins').text(wins);
     gameRestart();
     }
+//Function if player loses
 function boo(){
     losses++;
     $('#numberLosses').text(losses);
@@ -60,6 +77,7 @@ console.log(target.nmbr+result);
  //display target number     
  document.getElementById("targetDisplay").innerHTML =target.nmbr;
     
+  //set on click funtion for each celeb buttons with an if statement to keep score
         
 $("#mila").click(function(){
     result=result + mila.nmbr;
@@ -111,6 +129,9 @@ $("#penny").click(function(){
 
     
     </script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>
